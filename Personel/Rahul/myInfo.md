@@ -1,2 +1,3 @@
-name:Rahul Gupta : MI-11 Deve
-Devops Designations:DevOps Intern
+name : Rahul Gupta
+Batch : MI-11
+Designation : DevOps intern
