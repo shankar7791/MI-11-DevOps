@@ -1,0 +1,39 @@
+1. ls - //list the directory content
+
+2. cd - //change directory
+
+3. mkdir - //create the directory
+
+4. touch - //create the empty file
+
+5. who - //shows the number user list present on system
+
+6. whoami - //shows the current loged in user
+
+7. rmdir - //remove the directory
+
+8. cat - //to concentrate files and edit the file
+
+9. pwd - //present working directory
+
+10. rm - //remove file
+
+11. cp - //copies file from source to dest
+
+12. mv - //moves file & directory from souce to destination
+
+13. which - //shows the executable of the commands
+
+14. find - //finds the files and directories
+
+15. man - //shows the manual of commands
+
+16. su - //switch user
+
+17. sudo - //run as administrator
+
+18. du - //disk usage
+
+19. df - //disk free
+
+20. clear - //clear the terminal
