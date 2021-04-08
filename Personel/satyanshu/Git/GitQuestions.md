@@ -46,3 +46,36 @@ v.Click Create repository.
 21)What is a ‘conflict’ in git? ->A conflict arises when two separate branches have made edits to the same line in a file, or when a file has been deleted in one branch but edited in the other.
 
 22)How can conflict in git resolved? ->Git gives a clue to resolving conflicts in its error message.
+
+23) To delete a branch what is the command that is used?
+=> Once your development branch is merged into the main branch, you don’t need
+development branch. To delete a branch use, the command “git branch –d [head]”.
+24) what is another option for merging in git?
+=>
+
+25) What is GIT version control?
+=> GIT version control, you can track the history of a collection of files and includes the functionality to revert the collection of files to another version. 
+26) What is the function of ‘git diff ’ in git? 
+=> ‘git diff ’ shows the changes between commits, commit and working tree etc.
+27) What is ‘git status’ is used for?
+=> As ‘Git Status’ shows you the difference between the working directory and the index, it is helpful in understanding a git more comprehensively.
+28) What is the difference between the ‘git diff ’and ‘git status’?
+=> ‘git diff’ is similar to ‘git status’, but it shows the differences between various commits and also between the working directory and index.
+29) What is the function of ‘git checkout’ in git?
+=> A ‘git checkout’ command is used to update directories or specific files in your working tree with those from another branch without merging it in the whole branch.
+30) What is the function of ‘git rm’?
+=> To remove the file from the staging area and also off your disk ‘git rm’ is used.
+31) What is the function of ‘git stash apply’?
+=> When you want to continue working where you have left your work, ‘git stash apply’ command is used to bring back the saved changes onto the working directory.
+32) What is the use of ‘git log’?
+=> To find specific commits in your project history- by author, date, content or history ‘git log’ is used.
+33) What is ‘git add’ is used for?
+=> ‘git add’ adds file changes in your existing directory to your index.
+34) What is the function of ‘git reset’?
+=> The function of ‘Git Reset’ is to reset your index as well as the working directory to the state of your last commit.
+35) Explain what is commit message?
+=> Commit message is a feature of git which appears when you commit a change. Git provides you a text editor where you can enter the modifications made in commits.
+36) Name a few Git repository hosting services
+=>  Pikacode , Visual Studio Online , GitHub , GitEnterprise , SourceForge.net 
+
+
