@@ -1,0 +1,96 @@
+﻿1) What is GIT?
+=> GIT is a free & open source distributed version control system designed to handle everyhing from small to very large projects with speed & efficiency.
+2) What is a repository in GIT?
+=> A repository contains a directory named .git, where git keeps all of its metadata for the repository. The content of the .git directory are private to git.
+3) What is the command you can use to write a commit message?
+=> git commit -m “message”
+4) What is the difference between GIT and SVN?
+=> GIT : It’s a distributed version control system.
+               GIT is an SCM(Source Code Management).
+               GIT has a clone repository.
+               GIT stored content as metadata.
+     SVN : It’s a centralized version control system.
+                SVN is revision control.
+                SVN does not have a clone repository.
+                SVN stores content as file.
+5) What are the advantages of using GIT?
+=> a) Performance
+     b) High availability
+     c) Security
+     d) Flexibility
+     e) Collaboration friendly
+     f) wide Acceptance
+6) What language is used in GIT?
+=> GIT is fast, and ‘C’ language makes this possible by reducing the overhead of runtimes associated with higher languages.
+7) What is the function of ‘GIT PUSH’ in GIT?
+=> ‘GIT PUSH’ updates remote refs along with associated objects.
+8) Why GIT better than Subversion?
+=> GIT is an open source version control system; it will allow you to run ‘versions’ of a project, which show the changes that were made to the code overtime also it allows you keep the backtrack if necessary and undo those changes. Multiple developers can checkout, and upload changes and each change can then be attributed to a specific developer.
+
+
+9) What is “Staging Area” or “Index” in GIT? 
+=> Before completing the commits, it can be formatted and reviewed in an intermediate area known as ‘Staging Area’ or ‘Index’.
+10) What is GIT stash?
+=> GIT stash takes the current state of the working directory and index and puts in on the stack for later and gives you back a clean working directory. 
+11) What is GIT stash drop?
+=> When you are done with the stashed item or want to remove it from the list, run the git ‘stash drop’ command. It will remove the last added stash item by default, and it can also remove a specific item if you include as an argument.
+12) How will you know in GIT if a branch has been already merged into master?
+=> Git branch - merged lists the branches that have been merged into the current branch
+Git branch -no merged lists the branches that have not been merged
+13) What is the function of git clone?
+=> The git clone command creates a copy of an existing Git repository. 
+14) What is the function of ‘git config’?
+=> The ‘git config’ command is a convenient way to set configuration options for your Git installation. 
+15) What does commit object contain?
+=> a) A set of files, representing the state of a project at a given point of time
+b) Reference to parent commit objects
+16) How can you create a repository in Git?
+=> In Git, to create a repository, create a directory for the project if it does not exist, and then run command “git init”. By running this command .git directory will be created in the project directory, the directory does not need to be empty.
+17) What is ‘head’ in git and how many heads can be created in a repository?
+=> A ‘head’ is simply a reference to a commit object. 
+18) What is the purpose of branching in GIT?
+=> The purpose of branching in GIT is that you can create your own branch and jump between those branches. 
+
+
+19) What is the common branching pattern in GIT?
+=> The common way of creating branch in GIT is to maintain one as “Main”
+20) How can you bring a new feature in the main branch?
+=> To bring a new feature in the main branch, you can use a command “git merge” or “git pull command”.
+21) What is a ‘conflict’ in git?
+=> A ‘conflict’ arises when the commit that has to be merged has some change in one place, and the current commit also has a change at the same place. Git will not be able to predict which change should take precedence.
+22) How can conflict in git resolved?
+=> To resolve the conflict in git, edit the files to fix the conflicting changes and then add the resolved files by running “git add” after that to commit the repaired merge, run “git commit”. Git remembers that you are in the middle of a merger, so it sets the parents of the commit correctly.
+23) To delete a branch what is the command that is used?
+=> Once your development branch is merged into the main branch, you don’t need
+development branch. To delete a branch use, the command “git branch –d [head]”.
+24) what is another option for merging in git?
+=>
+
+25) What is GIT version control?
+=> GIT version control, you can track the history of a collection of files and includes the functionality to revert the collection of files to another version. 
+26) What is the function of ‘git diff ’ in git? 
+=> ‘git diff ’ shows the changes between commits, commit and working tree etc.
+27) What is ‘git status’ is used for?
+=> As ‘Git Status’ shows you the difference between the working directory and the index, it is helpful in understanding a git more comprehensively.
+28) What is the difference between the ‘git diff ’and ‘git status’?
+=> ‘git diff’ is similar to ‘git status’, but it shows the differences between various commits and also between the working directory and index.
+29) What is the function of ‘git checkout’ in git?
+=> A ‘git checkout’ command is used to update directories or specific files in your working tree with those from another branch without merging it in the whole branch.
+30) What is the function of ‘git rm’?
+=> To remove the file from the staging area and also off your disk ‘git rm’ is used.
+31) What is the function of ‘git stash apply’?
+=> When you want to continue working where you have left your work, ‘git stash apply’ command is used to bring back the saved changes onto the working directory.
+32) What is the use of ‘git log’?
+=> To find specific commits in your project history- by author, date, content or history ‘git log’ is used.
+33) What is ‘git add’ is used for?
+=> ‘git add’ adds file changes in your existing directory to your index.
+34) What is the function of ‘git reset’?
+=> The function of ‘Git Reset’ is to reset your index as well as the working directory to the state of your last commit.
+35) Explain what is commit message?
+=> Commit message is a feature of git which appears when you commit a change. Git provides you a text editor where you can enter the modifications made in commits.
+36) Name a few Git repository hosting services
+=>  Pikacode , Visual Studio Online , GitHub , GitEnterprise , SourceForge.net 
+
+
+
+
