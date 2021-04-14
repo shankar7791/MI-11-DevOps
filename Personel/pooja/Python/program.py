@@ -1,9 +1,9 @@
 
     print("""
     1. If Statement
-    2. If Else statement
-    3. Nested If
-    4. If-elif ladder
+    2. if-else statement
+    3. Nested-if
+    4. if-elif-ladder
     5. Shorthand if
     6. Shorthand if-else
     7. Exit
