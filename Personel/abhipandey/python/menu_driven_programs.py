@@ -8,15 +8,15 @@ while True :
     6.)return
     """)
 
-    opt = int(input("Enter the choice:"))
+    option = int(input("Enter the choice:"))
 
-    if opt == 1:
+    if option == 1:
         print("if statement")
         x = int(input("enter a number: "))
         if x > 20 :
             print("number is greater than 20")
 
-    elif opt == 2:
+    elif option == 2:
         print("if-else statement")
         a =  int(input("enter the number: "))
         if a < 50 :
@@ -24,21 +24,18 @@ while True :
         else:
             print("a is greater than 50 ")
 
-    elif opt == 3:
+    elif option == 3:
         print("nested if-else ")
-        b = int(input("enter the marks of student :"))
-        if b >=90:
-            print("congratulations")
-            if b < 35:
-                print ("failed")
-            if b > 35:
-                print("no worries passed ") 
-            if b < 70 :
-                print(" well done student")
+        b = int(input("enter the number of choice :"))
+        if b%4 == 0 :
+            if b%5 == 0 :
+                print("Number is Divisible by 5")
+            else :
+                print("Number is not Divisible by 5")
         else :
-            print ("marks entered invalid")
+            print("Number is not Divisible by 4")
 
-    elif opt == 4:
+    elif option == 4:
         print("if - elif ladder ")
         c = int(input("enter the number: "))
         if c <=15:
@@ -48,16 +45,17 @@ while True :
         else :
             print("not eligible")
 
-    elif opt == 5:
+    elif option == 5:
         print("shorthand if ")
         e = int(input("enter the age: "))
         if e > 18 : print("eligible for driving liscense: ")
 
-    elif opt == 6:
+    elif option == 6:
         break
 
     else : 
         print ("invalid choice , bye bye ")
+        break
 
         
 
