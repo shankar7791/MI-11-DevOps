@@ -1,71 +1,46 @@
-while True :
-    print("""
-    1.)If Statement
-    2.)If Else statement
-    3.)Nested If
-    4.)If-elif ladder
-    5.)Shorthand if
-    6.)Shorthand if-else
-    7.)Exit
-    """)
+##
 
-    opt = int(input("Enter The Choice Number: "))
+num= int(input("Enter the Number: "))
+if num > 60:
+    print("Number is Greater than 60")
+elif num < 45:
+    print("Number is less than 45")
+else :
+    print("Number is Between 45 and 60")
 
 
-    if opt == 1 :
-        print("\n Checking If Statement")
-        x = int(input("Enter A Number: "))
-        if x > 25 :
-            print("Number is Greater Than 25")
+
+##
+
+num=int(input('Enter the number:'))
+if num>=0:
+    print("number is positive")
+else:
+    print("number is negative")
 
 
-    elif opt == 2 :
-        print("\n Checking If else Statement")
-        x = int(input("Enter A Number: "))
-        if x%2 == 0 :
-            print("Number is Even")
-        else :
-            print("Number is Odd")
+##
+num= int(input("Enter the number:"))
+if num>0:
+    print("number is positive")
+elif num == 0:
+     print("Number is Zero")
+else:
+    print("number is negative")
 
+##
+es (3 sloc) 80 Bytes
+num =int(input("Enter the number:"))
+if num>0 :
+    print("number is positive")
 
-    elif opt == 3 :
-        print("\n Checking Nested If else Statement")
-        x = int(input("Enter A Number: "))
-        if x%2 == 0 :
-            if x%3 == 0 :
-                print("Number is Divisible by 6")
-            else :
-                print("Number is not Divisible by 6")
-        else :
-            print("Number is not Divisible by 6")
+##
 
+a = 22
+b = 32
+print("A") if a > b  else print("B")
 
-    elif opt == 4 :
-        print("\n Checking If elif Ladder Statement")
-        x = int(input("Enter A Number: "))
-        if x > 20 :
-            print("Number is Greater than 20")
-        elif x < 10:
-            print("Number is less than 10")
-        else :
-            print("Number is Between 10 and 20")
+##
 
-
-    elif opt == 5 :
-        print("\n Checking Shorthand If Statement")
-        x = int(input("Enter A Number: "))
-        if x > 10 : print("Number is Greate than 10")
-
-
-    elif opt == 6 :
-        print("\n Checking Shorthand If else Statement")
-        x = int(input("Enter your Age: "))
-        print("Valid for Voting") if x >= 18 else print("Invalid for Voting")
-
-
-    elif opt == 7 :
-        break
-
-
-    else :
-        print("\n Wrong Choice Selected")
+num = int(input("Enter a Number: "))
+if num > 50 : print("Number is Greate than 50")
