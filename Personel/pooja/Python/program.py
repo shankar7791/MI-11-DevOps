@@ -1,4 +1,4 @@
-
+while True :
     print("""
     1. If Statement
     2. if-else statement
