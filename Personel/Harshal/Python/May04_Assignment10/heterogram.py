@@ -1,6 +1,5 @@
 def hetro(stri) : 
     set_stri = set(stri)
-    #print (inps)
     if len(set_stri)==len(stri):
         print ("Entered String is Heterogram")
     else:
