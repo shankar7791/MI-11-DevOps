@@ -8,7 +8,7 @@ for i in range(len(a)) :
     for j in range(i+1, len(a)):
         if a[j] < a[temp] :
             temp = j
-    a[i],a[temp] = a[temp],a[i]
+    a[i], a[temp] = a[temp], a[i]
     print(a)
 print("\nArray After Selection Sort")
 print(a)

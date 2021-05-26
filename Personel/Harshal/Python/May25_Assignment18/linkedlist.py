@@ -21,6 +21,23 @@ class LinkedList:
         while(temp):
             print(temp.data)
             temp = temp.next
+    
+    def delete(self, val) :
+        temp = self.head
+        if temp is not None :
+            if temp.data == val:
+                self.head = temp.next
+                temp = None
+                return
+        while(temp is not None):
+            if temp.data == val :
+                break
+            prev = temp
+            temp = temp.next
+        if temp == None :
+            return -1
+        prev.next = temp.next
+        temp = None
 
 if __name__=='__main__':
     ll = LinkedList()
@@ -28,7 +45,8 @@ if __name__=='__main__':
         print("""
         1.Add Data to Linked list
         2.Print Linked List
-        3.Exit""")
+        3.Delete Data From Linket List
+        4.Exit""")
         ch = int(input("Enter Your Choice : "))
         if ch == 1 :
             val = int(input("Enter the Value to insert : "))
@@ -38,8 +56,16 @@ if __name__=='__main__':
             ll.printll()
         
         elif ch == 3 :
+            val = int(input("Enter the data to be deleted : "))
+            op = ll.delete(val)
+            if op == -1 :
+                print(f"Value {val} does not exist in the Linked List")
+            else :
+                print(f"Deleted Value {val} from the linked list")
+
+        elif ch == 4 :
             exit()
-        
+            
         else :
             print("Wrong Input")
 
