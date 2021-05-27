@@ -4,44 +4,30 @@ class Node :
         self.name = name
         self.batch = batch
         self.next = None
+        self.prev = None
 
-class LinkedList :
-    def __init__(self) :  
+class LinkedList:
+    def __init__(self):  
         self.head = None
-    
+
     def insert(self, newNode) :
         if(self.head is not None) :
             current = self.head
             while(current.next is not None) :
                 current = current.next
             current.next = newNode
+            newNode.prev = current
         else:
             self.head = newNode
-    
+
     def printll(self) :
         temp = self.head
         print()
+        print("[NULL]<---")
         while(temp) :
-            print(f"[{temp.id},{temp.name},{temp.batch}]--->",end="")
+            print(f"[{temp.id},{temp.name},{temp.batch}]<--->",end="")
             temp = temp.next
         print("[NULL]")
-
-    def delete(self, id) :
-        temp = self.head
-        if temp is not None :
-            if temp.id == id:
-                self.head = temp.next
-                temp = None
-                return
-        while(temp is not None) :
-            if temp.id == id :
-                break
-            prev = temp
-            temp = temp.next
-        if temp == None :
-            return -1
-        prev.next = temp.next
-        temp = None
 
     def search(self, id) :
         temp = self.head
@@ -53,7 +39,7 @@ class LinkedList :
             temp = temp.next
         else :
             print("\nStudent ID not Found")
-    
+
     def update(self, id, new_name, new_batch) :
         temp = self.head
         while(temp) :
@@ -65,7 +51,23 @@ class LinkedList :
         else :
             print("\nStudent ID not found for update")
 
-
+    def delete(self, id) :
+        temp = self.head
+        if temp is not None :
+            if temp.id == id:
+                self.head = temp.next
+                temp = None
+                return
+        while(temp is not None) :
+            if temp.id == id :
+                break
+            temp = temp.next
+        if temp == None :
+            return -1
+        temp.prev.next = temp.next
+        temp.next.prev = temp.prev
+        temp = None
+    
 ll = LinkedList()
 
 while True :
@@ -116,4 +118,3 @@ while True :
 
     else :
         print("\nWrong Input")
-
