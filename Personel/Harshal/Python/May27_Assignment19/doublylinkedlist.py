@@ -56,6 +56,7 @@ class LinkedList:
         if temp is not None :
             if temp.id == id:
                 self.head = temp.next
+                temp.next.prev = None
                 temp = None
                 return
         while(temp is not None) :
