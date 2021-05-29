@@ -12,7 +12,6 @@ class Linked_List :
     def insert(self, newNode) :
         if self.head == None :
             self.head = newNode 
-            self.head.next = None
         else :
             temp = self.head
             while (temp) :
@@ -34,11 +33,9 @@ class Linked_List :
             if temp.id == id :
                 print(f"\nStudent Id {id} Found!!!")
                 print(f"Student Id :{temp.id}\nStudent Name : {temp.name}\nStudent Batch : {temp.batch}", end="")
-                flag = 0
                 break
             else :
-                flag = 1
-            temp = temp.next
+                temp = temp.next
         else :
             print(f"\nStudent Id {id} NOT Found!!!")
 
