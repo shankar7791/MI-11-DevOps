@@ -23,7 +23,7 @@ class LinkedList:
     def printll(self) :
         temp = self.head
         print()
-        print("[NULL]<---", end="")
+        print("[NULL]<---")
         while(temp) :
             print(f"[{temp.id},{temp.name},{temp.batch}]<--->",end="")
             temp = temp.next
@@ -54,21 +54,19 @@ class LinkedList:
     def delete(self, id) :
         temp = self.head
         if temp is not None :
-            if temp.id == id and temp.next == None:
-                self.head = None
+            if temp.id == id:
+                self.head = temp.next
+                temp.next.prev = None
+                temp = None
                 return
         while(temp is not None) :
             if temp.id == id :
-                if self.head == temp :
-                    self.head = temp.next
                 break
             temp = temp.next
         if temp == None :
             return -1
-        if temp.prev is not None:
-            temp.prev.next = temp.next
-        if temp.next is not None :
-            temp.next.prev = temp.prev
+        temp.prev.next = temp.next
+        temp.next.prev = temp.prev
         temp = None
     
 ll = LinkedList()
