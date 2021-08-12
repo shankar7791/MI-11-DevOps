@@ -1,0 +1,84 @@
+{% extends 'student_template/base_template.html' %}
+
+{% block page_title %}
+    Student Profile
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content ">
+{% if messages %}
+<div class="form-group">
+<div class="col-12">
+    {% for message in messages %}
+    {% if message.tags == "error" %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    {% elif message.tags == "success" %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    {% endif %}
+    {% endfor %}
+</div>
+</div>
+{% endif %}
+    <div class="container h-100">
+        <div class="row align-items-center h-100">
+            <div class="col-6 mx-auto">
+                    <div class="card card-primary card-outline col-md-auto">
+                          <div class="card-body box-profile col-md-auto">
+                            <div class="text-center">
+                              <img class="profile-user-img img-fluid img-circle" img src="{{ student.profile_pic }}" alt="User profile picture">
+                            </div>
+
+                            <h3 class="profile-username text-center">{{ student.admin.first_name }} {{ student.admin.last_name }}</h3>
+
+                            <p class="text-muted text-center"></p>
+
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                <b>ID</b> <a class="float-right">{{ student.admin.id }}</a>
+                              </li>
+                                <li class="list-group-item">
+                                <b>Username</b> <a class="float-right">{{ student.admin.username }}</a>
+                              </li>
+                                <li class="list-group-item">
+                                <b>Email</b> <a class="float-right">{{ student.admin.email }}</a>
+                              </li>
+                                <li class="list-group-item">
+                                <b>Course</b> <a class="float-right">{{ student.course_id.course_name }}</a>
+                              </li>
+                              <li class="list-group-item">
+                                <b>Gender</b> <a class="float-right">{{ student.gender }}</a>
+                              </li>
+                              <li class="list-group-item">
+                                <b>Address</b> <a class="float-right">{{ student.address }}</a>
+                              </li>
+                                <li class="list-group-item">
+                                <b>Session</b> <a class="float-right">{{ student.session_year_id.session_start_year }}-{{ student.session_year_id.session_end_year }}</a>
+                              </li>
+                                <li class="list-group-item">
+                                <b>Date Joined</b> <a class="float-right">{{ student.admin.date_joined }}</a>
+                              </li>
+                            </ul>
+
+                            <a href="{% url 'student_profile'  %}" class="btn btn-primary btn-block"><b>Edit Profile</b></a>
+                          </div>
+                          <!-- /.card-body -->
+                        </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  {% endblock main_content %}

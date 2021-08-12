@@ -1,0 +1,285 @@
+{% extends 'hod_template/base_template.html' %}
+{% block page_title %}
+Home
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+
+        <div class="row">
+       <div class="col-12">
+         <div class="card">
+           <div class="card-header">
+             <h3 class="card-title">Student Details</h3>
+
+             <div class="card-tools">
+               <div class="input-group input-group-sm" style="width: 150px;">
+                 <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                 <div class="input-group-append">
+                   <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <!-- /.card-header -->
+           <div class="card-body table-responsive p-0">
+             <table class="table table-hover text-nowrap">
+               <thead>
+                 <tr>
+                   <th>ID</th>
+                   <th>First Name</th>
+                   <th>Last Name</th>
+                   <th>User Name</th>
+                   <th>Email</th>
+                   <th>Address</th>
+                   <th>Gender</th>
+                   <th>Profile Pic</th>
+                   <th>Session Year</th>
+                   <th>Course</th>
+                   <th>Last Login</th>
+                   <th>Date Joined</th>
+                   <th>Action</th>
+                 </tr>
+               </thead>
+               <tbody>
+               {% for student in students %}
+                 <tr>
+                   <td>{{ student.admin.id }}</td>
+                   <td>{{ student.admin.first_name }}</td>
+                   <td>{{ student.admin.last_name }}</td>
+                   <td>{{ student.admin.username }}</td>
+                   <td>{{ student.admin.email }}</td>
+                   <td>{{ student.address }}</td>
+                   <td>{{ student.gender }}</td>
+                   <td><img src="{{ student.profile_pic }}" style="width:100px"/></td>
+                   <td>{{ student.session_year_id.session_start_year }} TO {{ student.session_year_id.session_end_year }}</td>
+                   <td>{{ student.course_id.course_name }}</td>
+                   <td>{{ student.admin.last_login }}</td>
+                   <td>{{ student.admin.date_joined }}</td>
+                   <td><a href="{% url 'edit_student' student_id=student.admin.id %}" class="btn btn-success">Edit</a></td>
+                 </tr>
+               {% endfor %}
+               </tbody>
+             </table>
+           </div>
+           <!-- /.card-body -->
+         </div>
+         <!-- /.card -->
+       </div>
+     </div>
+   </div>
+
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}
+{% block custom_js %}
+<script>
+    $(document).ready(function(){
+
+            var pieData        = {
+                  labels: [
+                      'Students',
+                      'Staffs'
+                  ],
+                  datasets: [
+                    {
+                      data: [{{ student_count }},{{ staff_count }}],
+                      backgroundColor : ['#f56954', '#00a65a'],
+                    }
+                  ]
+             };
+
+            var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+            var pieOptions     = {
+              maintainAspectRatio : false,
+              responsive : true,
+            }
+            //Create pie or douhnut chart
+            // You can switch between pie and douhnut using the method below.
+            var pieChart = new Chart(pieChartCanvas, {
+              type: 'pie',
+              data: pieData,
+              options: pieOptions
+            });
+
+            //Second Chart for Total Subject in Each Course
+                var subject_count_list={{ subject_count_list }};
+                var course_name_list={{ course_name_list|safe }};
+                var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+                var donutData        = {
+                  labels:course_name_list,
+                  datasets: [
+                    {
+                      data: subject_count_list,
+                      backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+                    }
+                  ]
+                }
+                var donutOptions     = {
+                  maintainAspectRatio : false,
+                  responsive : true,
+                }
+                //Create pie or douhnut chart
+                // You can switch between pie and douhnut using the method below.
+                var donutChart = new Chart(donutChartCanvas, {
+                  type: 'doughnut',
+                  data: donutData,
+                  options: donutOptions
+                });
+
+
+                //show total student in each course
+                var student_count_list_in_course={{ student_count_list_in_course }};
+
+                  var pieData2        = {
+                          labels:course_name_list,
+                          datasets: [
+                            {
+                              data: student_count_list_in_course,
+                              backgroundColor : ['#f56954', '#00a65a','#aa00ff', '#ff3d00'],
+                            }
+                          ]
+                     };
+
+                    var pieChartCanvas2 = $('#pieChart3').get(0).getContext('2d')
+                    var pieOptions2     = {
+                      maintainAspectRatio : false,
+                      responsive : true,
+                    }
+                    var pieChart = new Chart(pieChartCanvas2, {
+                      type: 'pie',
+                      data: pieData2,
+                      options: pieOptions2
+                    });
+
+                //show total student in each Subject
+                var student_count_list_in_subject={{ student_count_list_in_subject }};
+                var subject_list={{ subject_list|safe }};
+
+                  var pieData3  = {
+                          labels:subject_list,
+                          datasets: [
+                            {
+                              data: student_count_list_in_subject,
+                              backgroundColor : ['#f56954', '#00a65a','#aa00ff', '#ff3d00','#bf360c','#ffff00','#00e676','#40c4ff','#f56954', '#00a65a','#aa00ff', '#ff3d00','#bf360c','#ffff00','#00e676','#40c4ff'],
+                            }
+                          ]
+                     };
+
+                    var pieChartCanvas3 = $('#pieChart4').get(0).getContext('2d')
+                    var pieOption3     = {
+                      maintainAspectRatio : false,
+                      responsive : true,
+                    }
+                    var pieChart = new Chart(pieChartCanvas3, {
+                      type: 'pie',
+                      data: pieData3,
+                      options: pieOption3
+                    });
+
+                        ///Staff Leave vs Attendance Bar Chart
+                        var attendance_present_list_staff={{ attendance_present_list_staff }};
+                        var attendance_absent_list_staff={{ attendance_absent_list_staff }};
+                        var staff_name_list={{ staff_name_list|safe }};
+                        var barChartData = {
+                          labels  : staff_name_list,
+                          datasets: [
+                            {
+                              label               : 'Leaves',
+                              backgroundColor     : 'rgba(60,141,188,0.9)',
+                              borderColor         : 'rgba(60,141,188,0.8)',
+                              pointRadius          : false,
+                              pointColor          : '#3b8bba',
+                              pointStrokeColor    : 'rgba(60,141,188,1)',
+                              pointHighlightFill  : '#fff',
+                              pointHighlightStroke: 'rgba(60,141,188,1)',
+                              data                : attendance_absent_list_staff
+                            },
+                            {
+                              label               : 'Attendance',
+                              backgroundColor     : 'rgba(210, 214, 222, 1)',
+                              borderColor         : 'rgba(210, 214, 222, 1)',
+                              pointRadius         : false,
+                              pointColor          : 'rgba(210, 214, 222, 1)',
+                              pointStrokeColor    : '#c1c7d1',
+                              pointHighlightFill  : '#fff',
+                              pointHighlightStroke: 'rgba(220,220,220,1)',
+                              data                : attendance_present_list_staff
+                            },
+                          ]
+                        }
+                        var barChartCanvas = $('#barChart1').get(0).getContext('2d')
+                        var temp0 = barChartData.datasets[0]
+                        var temp1 = barChartData.datasets[1]
+                        barChartData.datasets[0] = temp1
+                        barChartData.datasets[1] = temp0
+
+                        var barChartOptions = {
+                          responsive              : true,
+                          maintainAspectRatio     : false,
+                          datasetFill             : false
+                        }
+
+                        var barChart = new Chart(barChartCanvas, {
+                          type: 'bar',
+                          data: barChartData,
+                          options: barChartOptions
+                        })
+
+                        //Student Leaves vs Attendance
+                        var attendance_present_list_student={{ attendance_present_list_student }};
+                        var attendance_absent_list_student={{ attendance_absent_list_student }};
+                        var student_name_list={{ student_name_list|safe }};
+                        var barChartData2 = {
+                          labels  : student_name_list,
+                          datasets: [
+                            {
+                              label               : 'Leaves',
+                              backgroundColor     : 'rgba(60,141,188,0.9)',
+                              borderColor         : 'rgba(60,141,188,0.8)',
+                              pointRadius          : false,
+                              pointColor          : '#3b8bba',
+                              pointStrokeColor    : 'rgba(60,141,188,1)',
+                              pointHighlightFill  : '#fff',
+                              pointHighlightStroke: 'rgba(60,141,188,1)',
+                              data                : attendance_absent_list_student
+                            },
+                            {
+                              label               : 'Attendance',
+                              backgroundColor     : 'rgba(210, 214, 222, 1)',
+                              borderColor         : 'rgba(210, 214, 222, 1)',
+                              pointRadius         : false,
+                              pointColor          : 'rgba(210, 214, 222, 1)',
+                              pointStrokeColor    : '#c1c7d1',
+                              pointHighlightFill  : '#fff',
+                              pointHighlightStroke: 'rgba(220,220,220,1)',
+                              data                : attendance_present_list_student
+                            },
+                          ]
+                        }
+                        var barChartCanvas2 = $('#barChart2').get(0).getContext('2d')
+                        var temp02 = barChartData2.datasets[0]
+                        var temp12 = barChartData2.datasets[1]
+                        barChartData2.datasets[0] = temp12
+                        barChartData2.datasets[1] = temp02
+
+                        var barChartOptions2 = {
+                          responsive              : true,
+                          maintainAspectRatio     : false,
+                          datasetFill             : false
+                        }
+
+                        var barChart2 = new Chart(barChartCanvas2, {
+                          type: 'bar',
+                          data: barChartData2,
+                          options: barChartOptions2
+                        })
+
+
+
+    });
+</script>
+{% endblock custom_js %}

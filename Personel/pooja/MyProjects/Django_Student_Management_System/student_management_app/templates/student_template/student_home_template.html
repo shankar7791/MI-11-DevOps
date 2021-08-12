@@ -1,0 +1,244 @@
+{% extends 'student_template/base_template.html' %}
+{% block page_title %}
+Home
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      {% if messages %}
+      <div class="form-group">
+      <div class="col-12">
+          {% for message in messages %}
+          {% if message.tags == "error" %}
+              <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+          {% elif message.tags == "success" %}
+              <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+          {% endif %}
+          {% endfor %}
+      </div>
+      </div>
+      {% endif %}
+          <div class="container h-100">
+              <div class="row align-items-center h-100">
+                  <div class="col-6 mx-auto">
+                          <div class="card card-primary card-outline col-md-auto">
+                                <div class="card-body box-profile col-md-auto">
+                                  <div class="text-center">
+                                    <img class="profile-user-img img-fluid img-circle" img src="{{ student.profile_pic }}" alt="User profile picture">
+                                  </div>
+      
+                                  <h3 class="profile-username text-center">{{ student.admin.first_name }} {{ student.admin.last_name }}</h3>
+      
+                                  <p class="text-muted text-center"></p>
+      
+                                  <ul class="list-group list-group-unbordered mb-3">
+                                      <li class="list-group-item">
+                                      <b>ID</b> <a class="float-right">{{ student.admin.id }}</a>
+                                    </li>
+                                      <li class="list-group-item">
+                                      <b>Username</b> <a class="float-right">{{ student.admin.username }}</a>
+                                    </li>
+                                      <li class="list-group-item">
+                                      <b>Email</b> <a class="float-right">{{ student.admin.email }}</a>
+                                    </li>
+                                      <li class="list-group-item">
+                                      <b>Course</b> <a class="float-right">{{ student.course_id.course_name }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                      <b>Gender</b> <a class="float-right">{{ student.gender }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                      <b>Address</b> <a class="float-right">{{ student.address }}</a>
+                                    </li>
+                                      <li class="list-group-item">
+                                      <b>Session</b> <a class="float-right">{{ student.session_year_id.session_start_year }}-{{ student.session_year_id.session_end_year }}</a>
+                                    </li>
+                                      <li class="list-group-item">
+                                      <b>Date Joined</b> <a class="float-right">{{ student.admin.date_joined }}</a>
+                                    </li>
+                                  </ul>
+      
+                                  <a href="{% url 'student_profile'  %}" class="btn btn-primary btn-block"><b>Edit Profile</b></a>
+                                </div>
+                                <!-- /.card-body -->
+                              </div>
+                  </div>
+              </div>
+          </div>
+    </section> 
+    <!-- /.content -->
+{% endblock main_content %}
+{% block custom_js %}
+<script>
+    $(document).ready(function(){
+
+            var subjects={{ data_name|safe }};
+            var data1={{ data1 }};
+            var data2={{ data2 }};
+            //Data Set for PIE CHart
+           var pieData  = {
+              labels: [
+                  'ABSENT',
+                  'PRESENT',
+                  'TOTAL'
+              ],
+              datasets: [
+                {
+                  data: [{{ attendance_absent }},{{ attendance_present }},{{ total_attendance }}],
+                  backgroundColor : ['#f56954', '#00a65a','#ffc107'],
+                }
+              ]
+            }
+
+
+            //Data Set for Bar Chart
+                var areaChartData = {
+                  labels  : subjects,
+                  datasets: [
+                    {
+                      label               : 'Present in Class',
+                      backgroundColor     : 'rgba(60,141,188,0.9)',
+                      borderColor         : 'rgba(60,141,188,0.8)',
+                      pointRadius          : false,
+                      pointColor          : '#3b8bba',
+                      pointStrokeColor    : 'rgba(60,141,188,1)',
+                      pointHighlightFill  : '#fff',
+                      pointHighlightStroke: 'rgba(60,141,188,1)',
+                      data                : data1
+                    },
+                    {
+                      label               : 'Absent in Class',
+                      backgroundColor     : 'rgba(210, 214, 222, 1)',
+                      borderColor         : 'rgba(210, 214, 222, 1)',
+                      pointRadius         : false,
+                      pointColor          : 'rgba(210, 214, 222, 1)',
+                      pointStrokeColor    : '#c1c7d1',
+                      pointHighlightFill  : '#fff',
+                      pointHighlightStroke: 'rgba(220,220,220,1)',
+                      data                : data2
+                    },
+                  ]
+                }
+
+
+            var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+            var pieOptions     = {
+              maintainAspectRatio : false,
+              responsive : true,
+            }
+            //Create pie or douhnut chart
+            // You can switch between pie and douhnut using the method below.
+            var pieChart = new Chart(pieChartCanvas, {
+              type: 'pie',
+              data: pieData,
+              options: pieOptions
+            });
+
+
+            var barChartCanvas = $('#barChart').get(0).getContext('2d')
+            var barChartData = jQuery.extend(true, {}, areaChartData)
+            var temp1 = areaChartData.datasets[0]
+            barChartData.datasets[0] = temp1
+
+            var barChartOptions = {
+              responsive              : true,
+              maintainAspectRatio     : false,
+              datasetFill             : false
+            }
+
+            var barChart = new Chart(barChartCanvas, {
+              type: 'bar',
+              data: barChartData,
+              options: barChartOptions
+            })
+    })
+</script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-messaging.js"></script>
+<script>
+    var firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "FIREBASE_AUTH_URL",
+        databaseURL: "FIREBASE_DATABASE_URL",
+        projectId: "FIREBASE_PROJECT_ID",
+        storageBucket: "FIREBASE_STORAGE_BUCKET_URL",
+        messagingSenderId: "FIREBASE_SENDER_ID",
+        appId: "FIREBASE_APP_ID",
+        measurementId: "FIREBASE_MEASUREMENT_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const messaging=firebase.messaging();
+
+    function IntitalizeFireBaseMessaging() {
+        messaging
+            .requestPermission()
+            .then(function () {
+                console.log("Notification Permission");
+                return messaging.getToken();
+            })
+            .then(function (token) {
+                console.log("Token : "+token);
+                sendToServer(token);
+            })
+            .catch(function (reason) {
+                console.log(reason);
+            });
+    }
+
+    messaging.onMessage(function (payload) {
+        console.log(payload);
+        const notificationOption={
+            body:payload.notification.body,
+            icon:payload.notification.icon
+        };
+
+        if(Notification.permission==="granted"){
+            var notification=new Notification(payload.notification.title,notificationOption);
+
+            notification.onclick=function (ev) {
+                ev.preventDefault();
+                window.open(payload.notification.click_action,'_blank');
+                notification.close();
+            }
+        }
+
+    });
+    messaging.onTokenRefresh(function () {
+        messaging.getToken()
+            .then(function (newtoken) {
+                console.log("New Token : "+ newtoken);
+                sendToServer(newtoken);
+            })
+            .catch(function (reason) {
+                console.log(reason);
+            })
+    });
+
+    function sendToServer(token){
+         $.ajax({
+                url:'{% url 'student_fcmtoken_save' %}',
+                type:'POST',
+                data:{token:token},
+            })
+            .done(function(response){
+                if(response=="True"){
+                    console.log("Token Save")
+                }
+                else{
+                    console.log("Error in Token Save")
+                }
+            });
+    }
+    IntitalizeFireBaseMessaging();
+</script>
+{% endblock custom_js %}
